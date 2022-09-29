@@ -11,6 +11,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    //NUMEROS Y BOTONES
+
+    //DECLARACION DE VARIABLES
     public EditText valor1, valor2;
     public Button suma, resta, multi, divi, limpiar;
     @Override
@@ -18,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //UNION DE LAS VARIABLES A TRAVEZ ID AL CAMPO NÚMERO
         valor1 = (EditText)findViewById(R.id.inValor1);
         valor2 = (EditText)findViewById(R.id.inValor2);
+        //UNION DE LAS VARIABLES A TRAVEZ DE ID AL CAMPO BUTTON
         suma = (Button)findViewById(R.id.btnSumar);
         resta = (Button)findViewById(R.id.btnRestar);
         multi = (Button)findViewById(R.id.btnMulti);
@@ -27,14 +32,20 @@ public class MainActivity extends AppCompatActivity {
         limpiar = (Button)findViewById(R.id.btnLimpiar);
     }
 
+    //METODOS DE LAS OPERACIONES
+
+    //SUMAR
     public void Sumar(View view){
         Intent sum = new Intent(this, ResultadosActivity.class);
         try{
+            //ASIGNACION DE VALORES
             sum.putExtra("valor1", valor1.getText().toString());
             sum.putExtra("valor2", valor2.getText().toString());
             sum.putExtra("operacion", suma.getText().toString());
+            //CONVERSION A DOUBLE
             double num1 = Double.parseDouble(valor1.getText().toString());
             double num2 = Double.parseDouble(valor2.getText().toString());
+            //CONVIERTE A STRING
             String resu = String.valueOf(num1 + num2);
             sum.putExtra("resultado", resu);
             startActivity(sum);
@@ -46,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             if (valor2.getText().length()==0){
                 sum.putExtra("valor2", 0);
             }
+            // MUESTRA EL RESULTADO Y OPERACION
             sum.putExtra("resultado", "Ha dejado campos vacíos");
             sum.putExtra("operacion", suma.getText().toString());
             startActivity(sum);
@@ -53,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //RESTAR
     public void Restar(View view){
         Intent res = new Intent(this, ResultadosActivity.class);
         try{
@@ -78,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //MULTIPLICAR
     public void Multiplicar(View view){
         Intent mul = new Intent(this, ResultadosActivity.class);
         try{
@@ -103,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //DIVIDIR
     public void Dividir(View view){
         Intent div = new Intent(this, ResultadosActivity.class);
         try{
@@ -111,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             div.putExtra("operacion", divi.getText().toString());
             double num1 = Double.parseDouble(valor1.getText().toString());
             double num2 = Double.parseDouble(valor2.getText().toString());
+            //Validación de divison por 0
             if(valor2.getText().toString().equals("0")){
                 div.putExtra("resultado", "El divisor no puede ser igual a 0.");
             }
@@ -136,9 +152,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //BOTON LIMPIAR
     public void Limpiar(View view){
         valor1.setText("");
         valor2.setText("");
-
     }
 }
