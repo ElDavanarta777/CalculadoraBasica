@@ -10,6 +10,7 @@ import android.view.View;
 
 public class ResultadosActivity extends AppCompatActivity {
 
+    //DECLARACION DE VARIABLES
     public TextView txtCalculo, txtResultado;
     public Button volver;
 
@@ -18,10 +19,12 @@ public class ResultadosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultados);
 
+        //UNION DE LAS VARIABLES A TRAVEZ ID
         txtCalculo = (TextView)findViewById(R.id.txtCalculo);
         txtResultado = (TextView)findViewById(R.id.txtResultado);
         volver = (Button)findViewById(R.id.btnVolver);
 
+        //OBTENCION DE VALORES
         String valor1 = getIntent().getStringExtra("valor1");
         String valor2 = getIntent().getStringExtra("valor2");
         String operacion = getIntent().getStringExtra("operacion");
@@ -30,6 +33,7 @@ public class ResultadosActivity extends AppCompatActivity {
         txtResultado.setText(resultado);
     }
 
+    //BOTON VOLVER
     public void Volver(View view){
         Intent volver = new Intent(this, MainActivity.class);
         this.finish();
