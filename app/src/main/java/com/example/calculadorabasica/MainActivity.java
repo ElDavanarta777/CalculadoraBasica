@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
             div.putExtra("operacion", divi.getText().toString());
             startActivity(div);
+
         }
     }
 
