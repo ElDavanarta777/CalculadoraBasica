@@ -138,5 +138,6 @@ public class MainActivity extends AppCompatActivity {
     public void Limpiar(View view){
         valor1.setText("");
         valor2.setText("");
+
     }
 }
